@@ -11,22 +11,15 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import LanguageIcon from '@mui/icons-material/Language';
 
 // <Divider orientation="vertical" />
-export default function HomeCard({setData,data,deleted,setDeleted,name , email, phone, web,handleDelete,username}) {
+export default function HomeCard({setData,data,name,email,phone, web,handleDelete,username}) {
     
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPhone, setUserPhone] = useState('');
     const [userWeb, setUserWeb] = useState('');
-    const [updatedName, setUpdatedName] = useState('');
-    const [updatedEmail, setUpdatedEmail]= useState('');
-    const [updatedPhone, setUpdatedPhone] = useState('');
+    
 
-    const onUpdate = () => {
-          setUpdatedName(userName);
-          console.log(updatedName)
-          setUpdatedEmail(userEmail);
-          setUpdatedPhone(userPhone);
-    }
+    
   // useEffect(()=>{
   //   const apifxn = async() =>{
   //       const img = await fetch(`https://avatars.dicebear.com/v2/avataaars/%7B%7B${name}%7D%7D.svg?options%5bmood%5d%5b%5d=happy`);
@@ -92,15 +85,14 @@ export default function HomeCard({setData,data,deleted,setDeleted,name , email, 
         setUserPhonecb={setUserPhone} userUserPhonedata={ userPhone}
         setUserWebcb={setUserWeb} userWebdata={userWeb} 
         data={data} setData={setData}
-        deleted={deleted}
-        setDeleted={setDeleted}
+        
         handleDelete={handleDelete}
         userName={username}
         name={name}
         email={email}
         phone={phone}
         web={web}
-        onUpdate={onUpdate}
+        
         />
         
         

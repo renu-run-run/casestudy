@@ -14,19 +14,19 @@ const Home = () => {
     // apifxn();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
-    const [deleted,setDeleted] = useState([]);
+    
     
     
 
     useEffect(_=>{
-      setTimeout( _ => setLoading(false), 2000);
+      setTimeout( _ => setLoading(false), 7000);
     },[]);
      useEffect(()=>{
         axios.get("https://jsonplaceholder.typicode.com/users").then((res)=>{
           
           setData(res.data);
           
-          setDeleted(res.data);
+          
         })
       
     },[])
@@ -48,7 +48,7 @@ const Home = () => {
 
           <Grid  container m={5} style={{marginTop:"3rem"}} justifyContent="center" justify = "center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{ flexGrow: 1 }} >
           {
-            data.map((ele, _)=>{
+            data.map((ele,_ )=>{
               return(
               <>
               <Grid m={4} key={ele.id} >
@@ -58,9 +58,6 @@ const Home = () => {
                phone={ele.phone} web={ele.website}
                key={ele.id}
                username={ele.username}
-               deleted={deleted}
-               setDeleted={setDeleted}
-               
                />
               </Grid>
               

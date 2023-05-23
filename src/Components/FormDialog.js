@@ -17,7 +17,7 @@ export default function FormDialog({data,setData
   ,setUserNamecb,userNamedata
   ,setUserEmailcb,userEmaildata
   ,userUserPhonedata,setUserPhonecb
-  ,deleted,setDeleted,userName,name,email,phone,web,onUpdate,setUserWebcb,userWebdata}) {
+  ,userName,name,email,phone,web,setUserWebcb,userWebdata}) {
   
   
   
@@ -35,7 +35,7 @@ export default function FormDialog({data,setData
     }
 
   };
-console.log(data);
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -43,7 +43,7 @@ console.log(data);
 
   const handleClose = () => {
     setOpen(false);
-    onUpdate();
+    
     setBoolEmail(true);
     setBoolName(true);
     setBoolPhone(true);
@@ -52,6 +52,8 @@ console.log(data);
   };
 const handleCloseCancel = () => {
   setUserNamecb("");
+  setUserEmailcb("");
+  setUserPhonecb("");
 }
 const handleDelete = (userName) => {
    const newArr = data.filter((ele) => ele.username !== userName);
@@ -60,15 +62,15 @@ const handleDelete = (userName) => {
 }
   return (
     <div>
-      <IconButton size="large" color="error" onClick={toggleFavourite}>
+      <IconButton sx={{marginLeft:"2.5rem"}} size="large" color="error" onClick={toggleFavourite}>
         {isFavourite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
       </IconButton>
       &nbsp;
-      <IconButton variant="outlined" onClick={handleClickOpen}>
+      <IconButton  sx={{marginLeft:"2.5rem"}} variant="outlined" onClick={handleClickOpen}>
        <EditIcon/>
       </IconButton>
       &nbsp;
-      <IconButton variant="outlined" onClick={()=>{handleDelete(userName)}}>
+      <IconButton sx={{marginLeft:"2.5rem"}} variant="outlined" onClick={()=>{handleDelete(userName)}}>
        <DeleteIcon/>
       </IconButton>
       &nbsp;
