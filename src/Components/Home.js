@@ -18,7 +18,7 @@ const Home = () => {
     
 
     useEffect(_=>{
-      setTimeout( _ => setLoading(false), 1000);
+      setTimeout( _ => setLoading(false), 5000);
     },[]);
      useEffect(()=>{
         axios.get("https://jsonplaceholder.typicode.com/users").then((res)=>{
