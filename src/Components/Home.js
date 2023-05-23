@@ -16,18 +16,27 @@ const Home = () => {
     const [data, setData] = useState([]);
     const [deleted,setDeleted] = useState([]);
     
+    
 
     useEffect(_=>{
-      setTimeout( _ => setLoading(false), 5000);
+      setTimeout( _ => setLoading(false), 2000);
     },[]);
      useEffect(()=>{
         axios.get("https://jsonplaceholder.typicode.com/users").then((res)=>{
           
           setData(res.data);
+          
           setDeleted(res.data);
         })
       
     },[])
+
+  //   const handleDelete = (id) => {
+  //     const newArr = data.filter((ele) => ele.id !== id);
+  //     console.log(id)
+  //     console.log("data deleted")
+  //     setData(newArr);
+  //  }
     
     return(
         <>
@@ -48,8 +57,10 @@ const Home = () => {
                name={ele.name} email={ele.email}
                phone={ele.phone} web={ele.website}
                key={ele.id}
+               username={ele.username}
                deleted={deleted}
                setDeleted={setDeleted}
+               
                />
               </Grid>
               

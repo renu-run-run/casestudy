@@ -17,10 +17,14 @@ export default function FormDialog({data,setData
   ,setUserNamecb,userNamedata
   ,setUserEmailcb,userEmaildata
   ,userUserPhonedata,setUserPhonecb
-  ,deleted,setDeleted}) {
+  ,deleted,setDeleted,userName,name,email,phone,web,onUpdate,setUserWebcb,userWebdata}) {
   
-  console.log(data);
   
+  
+  const [boolName, setBoolName] = useState(true);
+  const [boolEmail, setBoolEmail] = useState(true);
+  const [boolPhone, setBoolPhone] = useState(true);
+  const [boolWeb, setBoolWeb] = useState(true);
   const [open, setOpen] = React.useState(false);
   const [isFavourite, setFavourite] = useState(false);
   const toggleFavourite = () => {
@@ -31,7 +35,7 @@ export default function FormDialog({data,setData
     }
 
   };
-
+console.log(data);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -39,13 +43,19 @@ export default function FormDialog({data,setData
 
   const handleClose = () => {
     setOpen(false);
+    onUpdate();
+    setBoolEmail(true);
+    setBoolName(true);
+    setBoolPhone(true);
+    setBoolWeb(true);
+
   };
 const handleCloseCancel = () => {
   setUserNamecb("");
 }
-const handleDelete = (id) => {
-   const newArr = data.filter((ele) => ele.id !== id);
-   console.log("delete")
+const handleDelete = (userName) => {
+   const newArr = data.filter((ele) => ele.username !== userName);
+   console.log(userName)
    setData(newArr);
 }
   return (
@@ -58,7 +68,7 @@ const handleDelete = (id) => {
        <EditIcon/>
       </IconButton>
       &nbsp;
-      <IconButton variant="outlined" onClick={()=>handleDelete(3)}>
+      <IconButton variant="outlined" onClick={()=>{handleDelete(userName)}}>
        <DeleteIcon/>
       </IconButton>
       &nbsp;
@@ -75,11 +85,14 @@ const handleDelete = (id) => {
             margin="dense"
             id="name"
             label="Name"
-            value={userNamedata}
+            value={userNamedata ===''&& boolName ? name : userNamedata }
             type="text"
             fullWidth
             variant="standard"
-            onChange={(e)=>setUserNamecb(e.target.value)}
+            onChange={(e)=> {
+              setBoolName(false);
+              setUserNamecb(e.target.value)
+            }}
           />
 
           <TextField
@@ -87,11 +100,14 @@ const handleDelete = (id) => {
             margin="dense"
             id="name"
             label="Email Address"
-            value={userEmaildata}
+            value={userEmaildata ===''&& boolEmail ? email : userEmaildata }
             type="email"
             fullWidth
             variant="standard"
-            onChange={(e)=>setUserEmailcb(e.target.value)}
+            onChange={(e)=>{
+              setBoolEmail(false);
+              setUserEmailcb(e.target.value)
+            }}
           />
 
           <TextField
@@ -99,11 +115,14 @@ const handleDelete = (id) => {
             margin="dense"
             id="name"
             label="Phone no."
-            value={userUserPhonedata}
+            value={userUserPhonedata ===''&& boolPhone ? phone : userUserPhonedata}
             type="tel"
             fullWidth
             variant="standard"
-            onChange={(e)=>setUserPhonecb(e.target.value)}
+            onChange={(e)=>{
+              setBoolPhone(false);
+              setUserPhonecb(e.target.value)
+            }}
           />
 
           <TextField
@@ -111,9 +130,14 @@ const handleDelete = (id) => {
             margin="dense"
             id="name"
             label="Website"
+            value={userWebdata ===''&& boolWeb ? web : userWebdata}
             type="text"
             fullWidth
             variant="standard"
+            onChange={(e)=>{
+              setBoolWeb(false);
+              setUserWebcb(e.target.value)
+            }}
           />
         </DialogContent>
         <DialogActions>
