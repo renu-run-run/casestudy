@@ -58,7 +58,7 @@ const handleDelete = (id) => {
        <EditIcon/>
       </IconButton>
       &nbsp;
-      <IconButton variant="outlined" onClick={()=>handleDelete(1)}>
+      <IconButton variant="outlined" onClick={()=>handleDelete(3)}>
        <DeleteIcon/>
       </IconButton>
       &nbsp;
